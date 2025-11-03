@@ -3,6 +3,21 @@
     is invoked, an argument is required.
 */
 const queens = []
+const tributeChest = []
+
+const payTribute = (tributeId,tributeDescription,queenId) => {
+    const tributeObject = {
+        id: tributeId,
+        description:tributeDescription,
+        queenId: queenId
+    }
+    tributeChest.push(tributeObject)
+}
+
+payTribute(1, "Barrel of wine", 2)
+payTribute(2, "Silk", 1)
+payTribute(3, "Bushel of oranges", 3)
+payTribute(4, "Ten gold coins", 1)
 
 const createQueen = (queenId,queenName) => {
     const queenObject = {
@@ -21,10 +36,13 @@ const hailTheQueen = (nameString) => {
     return `Hail Her Majesty, ${nameString}.`  // This function returns a string
 }
 
-const athena = hailTheQueen("Athena Perez") // Argument value is "Athena Perez"
-const charisse = hailTheQueen("Charisse Ford") // Argument value is "Charisse Ford"
-const jenna = hailTheQueen("Jenna Solis") // Argument value is "Jenna Solis"
 
-console.log(charisse)
-console.log(jenna)
-console.log(athena)
+for (const queen of queens) {
+    
+    for (const tribute of tributeChest) {
+        if(tribute.queenId === queen.id) {
+            console.log(`${queen.name} has tribute ${tribute.description}`)
+        }
+    }
+    
+}
